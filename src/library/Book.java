@@ -1,5 +1,5 @@
 package library;
- //test
+ //test2
 public class Book {
 
 	// GRASP Principle: Information Expert
