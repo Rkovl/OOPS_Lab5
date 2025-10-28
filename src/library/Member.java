@@ -17,7 +17,7 @@ public class Member {
 
 	public void borrowBook(Book book) {
 		if (book.isAvailable()) {
-			book.borrowBook();
+			book.borrow();
 			borrowedBooks.add(book);
 			System.out.println(name + " borrowed " + book.getTitle());
 		} else {
