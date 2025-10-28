@@ -16,13 +16,9 @@ public class Member {
 	}
 
 	public void borrowBook(Book book) {
-		if (book.isAvailable()) {
-			book.borrow();
-			borrowedBooks.add(book);
-			System.out.println(name + " borrowed " + book.getTitle());
-		} else {
-			System.out.println(book.getTitle() + " is not available for borrowing.");
-		}
+		borrowedBooks.add(book);
 	}
 
-}
+	public void returnBook(Book book) {
+		borrowedBooks.remove(book);
+	}
