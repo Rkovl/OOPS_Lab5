@@ -23,7 +23,7 @@ public class Member {
 		borrowedBooks.add(book);
 	}
 
-	public void returnBook(Book book) {
+	public boolean returnBook(Book book) {
 		borrowedBooks.remove(book);
 	}
 
