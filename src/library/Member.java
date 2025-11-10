@@ -1,5 +1,9 @@
 package library;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Member {
 
 	// GRASP Principle: Information Expert and Low Coupling
@@ -9,8 +13,8 @@ public class Member {
 	private String memberID;
 	private List<Book> borrowedBooks;
 
-	public Member(String memberID, String name) {
-		this.memberID = memberID;
+	public Member(String name) {
+		this.memberID = name + String.format("%05d", new Random().nextInt(100000));;
 		this.name = name;
 		this.borrowedBooks = new ArrayList<>();
 	}
@@ -22,3 +26,5 @@ public class Member {
 	public void returnBook(Book book) {
 		borrowedBooks.remove(book);
 	}
+
+}
