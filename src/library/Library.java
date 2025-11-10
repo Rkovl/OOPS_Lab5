@@ -1,6 +1,7 @@
 package library;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
@@ -13,46 +14,49 @@ public class Library {
     // private catalog (list of Book)
     // private members (list of Members)
 
+    private HashMap<String, Book> catalog;
+    private HashMap<String, Member> members;
+
     // DONE: implement functionality of Member class
-    private ArrayList<Book> catalog = new ArrayList<>();
-    private ArrayList<Member> members = new ArrayList<>();
-
     public Library() {
+        catalog = new HashMap<>();
+        members = new HashMap<>();
     }
 
-    public void addBook(Book book) {
-        catalog.add(book);
+    public void addBook(String title, String author) {
+        catalog.put(title, new Book(title, author));
+    }
+    public void removeBook(String title) {
+        catalog.remove(title);
     }
 
-    public void removeBook(Book book) {
-        catalog.remove(book);
+    public void addMember(String name){
+        members.put(name, new Member(name));
+    }
+    public void removeMember(String name){
+        members.remove(name);
     }
 
-    public void addMember(Member member) {
-        members.add(member);
+    public ArrayList<Book> getAvailableBooks() {
+        ArrayList<Book> bookArr = new ArrayList<>();
+        for (Book book : catalog.values()) {
+            if (book.isAvailable()) {
+                bookArr.add(book);
+            }
+        }
+        return bookArr;
+    }
+    public ArrayList<Book> getBooks() {
+        return new ArrayList<>(catalog.values());
+    }
+    public ArrayList<Member> getMembers() {
+        return new ArrayList<>(members.values());
     }
 
-    public void removeMember(Member member) {
-        members.remove(member);
+    public Book getBook(String title) {
+        return catalog.get(title);
     }
-
-    public ArrayList<Book> availableBooks() {
-        ArrayList<Book> availableBooks = new ArrayList<>();
-        for (Book book : catalog)
-            if (book.isAvailable())
-                availableBooks.add(book);
-
-        return availableBooks;
-    }
-
-    public ArrayList<Book> borrowedBooks() {
-
-        ArrayList<Book> borrowedBooks = new ArrayList<>();
-        for (Book book : catalog)
-            if (!book.isAvailable())
-                borrowedBooks.add(book);
-
-        return borrowedBooks;
-
+    public Member getMember(String name) {
+        return members.get(name);
     }
 }
