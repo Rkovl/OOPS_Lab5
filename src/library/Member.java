@@ -24,7 +24,7 @@ public class Member {
 	}
 
 	public boolean returnBook(Book book) {
-		borrowedBooks.remove(book);
+		return borrowedBooks.remove(book);
 	}
 
 }
