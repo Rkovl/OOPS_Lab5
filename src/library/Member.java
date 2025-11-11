@@ -26,4 +26,9 @@ public class Member {
 	public boolean returnBook(Book book) {
 		return borrowedBooks.remove(book);
 	}
+
+	@Override
+	public String toString() {
+		return "Member Name: " + name + ", Member ID: " + memberID;
+	}
 }

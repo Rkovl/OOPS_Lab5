@@ -26,6 +26,9 @@ public class Library {
     public void addBook(String title, String author) {
         catalog.put(title, new Book(title, author));
     }
+    public void addBook(String title){
+        catalog.put(title, new Book(title, "Unknown"));
+    }
     public void removeBook(String title) {
         catalog.remove(title);
     }
